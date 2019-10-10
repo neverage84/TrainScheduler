@@ -1,0 +1,15 @@
+body, html {
+    height: 100%;
+   }
+   
+   .bg {
+       background: url("Images/download.jpeg") no-repeat center center fixed;
+     
+       background-size: cover;
+       height: 100%;
+   }
+
+   .card {
+    opacity: .8;
+   }
+   
