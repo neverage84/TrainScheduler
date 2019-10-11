@@ -39,6 +39,10 @@ console.log(newTrain.Frequency);
 alert("Train successfully added");
 
 // Clears all of the text-boxes
+$("#train-name-input").val("");
+$("#destination-input").val("");
+$("#first-train-time-input").val("");
+$("#frequency-input").val("");
 
 
 });
