@@ -50,8 +50,26 @@ $("#frequency-input").val("");
 
 
 });
-//what happends when a new child is added
+//what happens when a new child is added
 database.ref().on("child_added", function(childSnapshot, prevChildKey) {
  console.log(childSnapshot.val());
+
+ //Everything is stored in a variable
+ var tName = childSnapshot.val().Train;
+ var tDestination = childSnapshot.val().Destination;
+ var tFirstTrain =  childSnapshot.val().FirstTrain;
+ var tFrequency = childSnapshot.val().Frequency;
+
+ var timeArr = tFirstTrain.split(":");
+ var tTime = moment().hours(timeArr[0]).minutes(timeArr[1]);
+ var maxMoment = moment.max(moment(), tTime);
+ var tMinutes;
+ var tArrival;
+
+ //if the first arrival time is after now, then send this to the arrive time
+
+ if (maxMoment === tTime){
+   tArrival = tTime.format("hh:mm A");
+ }
 
 });
