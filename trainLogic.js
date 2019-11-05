@@ -18,17 +18,17 @@ $("#add-train-btn").on("click",function(event) {
  //Grabs user Input
  var train = $("#train-name-input").val().trim();
  var dest = $("#destination-input").val().trim();
- var firstTrain = moment($("#first-train-time-input").val().trim(), "HH:mm").format("X");
- var frequency = moment($("#frequency-input").val().trim(), "mm").format("X");
+ var firstTrain = $("#first-train-time-input").val().trim();
+ var frequency = $("#frequency-input").val().trim();
 
- // Creates local "temporary" object for holding employee data
+ // Creates local "temporary" object for holding train data
   var newTrain = {
       Train: train,
       Destination: dest,
       FirstTrain: firstTrain,
       Frequency: frequency
   };
-// Uploads employee data to the database
+// Uploads train data to the database
 database.ref().push(newTrain);
 // Logs everything to console
 console.log(newTrain.Train);
@@ -44,5 +44,14 @@ $("#destination-input").val("");
 $("#first-train-time-input").val("");
 $("#frequency-input").val("");
 
+// Create the new row
+//var newRow = $("<tr>").append(
+    
+
+
+});
+//what happends when a new child is added
+database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+ console.log(childSnapshot.val());
 
 });
