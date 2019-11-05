@@ -66,6 +66,8 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
  var tMinutes;
  var tArrival;
 
+ 
+
  //if the first arrival time is after now, then send this to the arrive time
 
  if (maxMoment === tTime){
@@ -73,4 +75,18 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
    tMinutes = tTime.diff(moment(), "minutes");
  }
 
+ else {
+
+  var difference = moment().diff(tTime, "minutes");
+  var tRemainder = difference % tFrequency;
+  tMinutes = tFrequency - tRemainder;
+
+  //Arrival time is equal to now plus tminutes
+  tArrival = moment().add(tMinutes, "m").format("hh:mm-A");
+ }
+ console.log(tMinutes);
+ console.log(tArrival);
+
+ //New row with train info
+ $("#train-table > tbody").append("<tr><td>" + tName + "</td><td>" + tDestination + "</td><td>" + tArrival + "</td><td>" + tMinutes + "</td></tr>");
 });
