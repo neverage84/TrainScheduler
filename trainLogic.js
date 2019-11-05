@@ -70,6 +70,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
  if (maxMoment === tTime){
    tArrival = tTime.format("hh:mm A");
+   tMinutes = tTime.diff(moment(), "minutes");
  }
 
 });
